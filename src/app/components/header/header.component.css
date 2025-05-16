@@ -91,7 +91,7 @@ nav li a:hover {
     left: 0;
     right: 0;
     flex-direction: column;
-    background-color: #3f51b5;
+    background-color: #ABD887;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-height: 0;
     overflow: hidden;
@@ -101,7 +101,8 @@ nav li a:hover {
   
   /* Classe active pour afficher le menu */
   nav ul.active {
-    max-height: 300px;
+    max-height: 100svh;
+    height: 100svh;
   }
   
   nav li {

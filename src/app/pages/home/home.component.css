@@ -16,7 +16,7 @@
   margin: 10px 0; font-size: 2em ;
 }
 .hero .text button{
-  background-color: #ABD887; padding: 12px 25px; margin: 10px 0; border: none; border-radius: 20px;
+  background-color: #ABD887; color: black; padding: 12px 25px; margin: 10px 0; border: none; border-radius: 20px;
 }
 
 .hero div img, .hero div{
@@ -53,6 +53,8 @@
   font-size: 14px;
   border-radius: 15px;  border: solid 1px;  
   transition: all 700ms;
+  background-color: #e63946;
+  color: black;
 }
 .search-box button:hover {
   transition: all 700ms;
