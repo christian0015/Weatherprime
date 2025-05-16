@@ -1,0 +1,41 @@
+<section class="contact-page">
+  <div class="contact-container">
+    <h2>Contactez-nous</h2>
+    <p data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="1000">Vous avez une question, une suggestion ou un souci ? Écrivez-nous.</p>
+
+    <!-- <form (ngSubmit)="sendMessage()" #contactForm="ngForm" action="https://formsubmit.co/christiantukundastocklin@gmail.com" method="POST"> -->
+    <form  #contactForm="ngForm" action="https://formsubmit.co/christiantukundastocklin@gmail.com" method="POST">
+      <input
+        type="text"
+        placeholder="Votre nom"
+        name="name"
+        required
+        [(ngModel)]="formData.name"
+      />
+      <input
+        type="email"
+        placeholder="Votre email"
+        name="email"
+        required
+        [(ngModel)]="formData.email"
+      />
+      <textarea
+        placeholder="Votre message"
+        name="message"
+        rows="6"
+        required
+        [(ngModel)]="formData.message"
+      ></textarea>
+      <button type="submit" [disabled]="!contactForm.form.valid"
+       data-aos="fade-up"
+     data-aos-duration="1200"
+      >Envoyer</button>
+    </form>
+
+    <p *ngIf="successMessage" class="success-msg">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+  </div>
+</section>

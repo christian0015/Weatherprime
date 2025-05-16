@@ -1,0 +1,37 @@
+.apropos {
+  background-color: #ebebeb;
+  color: #000000;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.apropos .container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.apropos h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  border-left: 6px solid #ABD887;
+  padding-left: 10px;
+}
+
+.apropos h2 {
+  margin-top: 30px;
+  color: #ABD887;
+}
+
+.apropos p {
+  line-height: 1.8;
+  margin-top: 10px;
+}
+
+.apropos ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.apropos li {
+  margin-bottom: 8px;
+}

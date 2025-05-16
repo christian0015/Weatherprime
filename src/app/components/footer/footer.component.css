@@ -1,0 +1,41 @@
+/* Style principal du footer */
+footer {
+  background-color: #48484A; /* Même couleur que le header pour cohérence */
+  color: white;
+  padding: 1.5rem 0;
+  margin-top: auto; /* Pousse le footer en bas si le contenu est court */
+  width: 100%;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #ADD98A; /* Couleur jaune pour le lien */
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+footer a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Style pour la signature du développeur */
+footer .developer-info {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+
+/* Media queries pour responsive */
+@media (max-width: 768px) {
+  footer {
+    padding: 1rem 0;
+  }
+}

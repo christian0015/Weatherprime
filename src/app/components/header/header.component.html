@@ -1,0 +1,18 @@
+<header>
+  <nav>
+    <a href="/"><h1>{{ title }}</h1></a>
+    
+    <!-- Bouton hamburger pour mobile -->
+    <button class="hamburger" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <ul [ngClass]="{'active': menuActive}">
+      <li><a routerLink="/" href="/" >Accueil</a></li>
+      <li><a routerLink="/apropos" href="/apropos">A propos</a></li>
+      <li><a routerLink="/contact" href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>

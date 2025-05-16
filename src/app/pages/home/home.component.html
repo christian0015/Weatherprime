@@ -1,0 +1,87 @@
+<section class="home">
+  <div class="hero">
+    <div class="text">
+      <h2>Weatherprime la consultation meteo la plus precise</h2>
+      <p  
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+      >Consultez la météo de votre ville ou de votre ville préférée.</p>
+      <button  data-aos="fade-up"
+        data-aos-duration="1000"
+        >Consulter
+      </button>
+    </div>
+    <div>
+      <img src="/heroImg.png" alt="" data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="1500">
+    </div>
+  </div>
+
+
+  <div class="weather-container">
+    <div class="search-box">
+      <input [(ngModel)]="city" placeholder="Entrez une ville" (keyup.enter)="searchWeather()">
+      <button (click)="searchWeather()"
+        data-aos="fade-up"
+        data-aos-duration="3000">Rechercher</button>
+      </div>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+    <div *ngIf="isLoading" class="loading">Chargement...</div>
+
+    <div *ngIf="current" class="weather-content">
+      <div class="view-selector">
+        <button (click)="activeView = 'current'" [class.active]="activeView === 'current'">Actuel</button>
+        <button (click)="activeView = 'hourly'" [class.active]="activeView === 'hourly'">Heures</button>
+        <button (click)="activeView = 'weekly'" [class.active]="activeView === 'weekly'">Semaine</button>
+      </div>
+
+      <!-- Vue actuelle -->
+      <div *ngIf="activeView === 'current'" class="current-view">
+        <h2>{{ current.name }}, {{ current.sys.country }}  <img [src]="current.flagUrl" [alt]="current.sys.country" style="width: 24px; margin-left: 8px; border: 1px solid #ddd; border-radius: 4px;"></h2>
+        <div class="current-main">
+          <img [src]="'https://openweathermap.org/img/wn/' + current.weather[0].icon + '@2x.png'">
+          <div>
+            <p class="big-temp">{{ current.main.temp }}°C</p>
+            <p>{{ current.weather[0].description }}</p>
+          </div>
+        </div>
+        <div class="current-details">
+          <p>Ressenti: {{ current.main.feels_like }}°C</p>
+          <p>Humidité: {{ current.main.humidity }}%</p>
+          <p>Vent: {{ current.wind.speed }} km/h</p>
+        </div>
+      </div>
+
+      <!-- Vue horaire -->
+      <div *ngIf="activeView === 'hourly'" class="hourly-view">
+        <h3>Prochaines heures</h3>
+        <div class="hourly-list">
+          <div *ngFor="let hour of hourly" class="hour-card">
+            <p>{{ formatTime(hour.dt) }}</p>
+            <img [src]="'https://openweathermap.org/img/wn/' + hour.weather[0].icon + '.png'">
+            <p>{{ hour.main.temp }}°C</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vue hebdomadaire -->
+      <div *ngIf="activeView === 'weekly'">
+        <h3>Prévisions sur 6 jours</h3>
+        <div class="weekly-view">
+          <div *ngFor="let day of weekly" class="day-card">
+            <p>{{ formatDate(day.dt) }}</p>
+            <img [src]="'https://openweathermap.org/img/wn/' + day.weather[0].icon + '.png'">
+            <div class="day-temps">
+              <span class="max">{{ day.temp.max }}°</span>
+              <span class="min">{{ day.temp.min }}°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

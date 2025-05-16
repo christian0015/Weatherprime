@@ -1,0 +1,73 @@
+.contact-page {
+  /* background-color: #ebebeb; */
+  color: #000000;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input,
+textarea {
+  padding: 12px;
+  border: 2px solid #abd887;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #000;
+}
+
+button {
+  padding: 12px;
+  background-color: #abd887;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #98c46d;
+}
+
+.success-msg {
+  color: green;
+  margin-top: 10px;
+}
+
+.error-msg {
+  color: red;
+  margin-top: 10px;
+}
