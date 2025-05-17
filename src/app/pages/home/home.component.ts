@@ -98,7 +98,7 @@ export class HomeComponent {
 
   hasAlert(): boolean {
   return (
-    this.current?.weather[0]?.main === 'Thunderstorm' ||
+    this.current?.weather[0]?.main !== 'Thunderstorm' ||
     this.current?.main?.temp > 35 ||
     this.current?.main?.temp < 0
   );

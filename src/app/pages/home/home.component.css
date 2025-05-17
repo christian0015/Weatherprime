@@ -133,11 +133,11 @@
 
 .view-selector button {
   padding: 8px 16px;
-  background: #f0f0f0;
+  background: #f0f0f0; color: #666;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  border-radius: 15px;  border: solid 1px;
+  border-radius: 15px;  border: #666 solid 1px;
 }
 
 .view-selector button.active {
