@@ -1,31 +1,43 @@
 <section class="home">
   <div class="hero">
     <div class="text">
-      <h2>Weatherprime la consultation meteo la plus precise</h2>
+      <h2>WeatherPrime — votre météo, en toute confiance</h2>
       <p  
         data-aos="fade-right"
         data-aos-offset="300"
         data-aos-easing="ease-in-sine"
-      >Consultez la météo de votre ville ou de votre ville préférée.</p>
-      <button  data-aos="fade-up"
+      >
+        Obtenez en temps réel les prévisions les plus précises pour votre ville ou toute autre destination. Anticipez la météo, où que vous soyez.
+      </p>
+      <button  
+        data-aos="fade-up"
         data-aos-duration="1000"
-        >Consulter
+        
+      >
+        <a href="#searchWeather" style="text-decoration: none; color: black;">Découvrir la météo</a>
       </button>
     </div>
     <div>
-      <img src="/heroImg.png" alt="" data-aos="fade-left"
-     data-aos-anchor="#example-anchor"
-     data-aos-offset="500"
-     data-aos-duration="1500">
+      <img 
+        src="/heroImg.png" 
+        alt="Illustration météo dynamique" 
+        data-aos="fade-left"
+        data-aos-anchor="#example-anchor"
+        data-aos-offset="500"
+        data-aos-duration="1500"
+      >
     </div>
   </div>
 
 
+
   <div class="weather-container">
     <div class="search-box">
-      <input [(ngModel)]="city" placeholder="Entrez une ville" (keyup.enter)="searchWeather()">
+      <input [(ngModel)]="city" placeholder="Entrez une ville" (keyup.enter)="searchWeather()" id="searchWeather">
       <button (click)="searchWeather()"
         data-aos="fade-up"
+        data-aos-anchor="#example-anchor"
+        data-aos-offset="700"
         data-aos-duration="3000">Rechercher</button>
       </div>
 
@@ -49,11 +61,122 @@
             <p>{{ current.weather[0].description }}</p>
           </div>
         </div>
-        <div class="current-details">
-          <p>Ressenti: {{ current.main.feels_like }}°C</p>
-          <p>Humidité: {{ current.main.humidity }}%</p>
-          <p>Vent: {{ current.wind.speed }} km/h</p>
+        <div class="weather-details">
+          <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3c-4.006 0-7.267 3.141-7.479 7.092-2.57.463-4.521 2.706-4.521 5.408 0 3.037 2.463 5.5 5.5 5.5h13c3.037 0 5.5-2.463 5.5-5.5 0-2.702-1.951-4.945-4.521-5.408-.212-3.951-3.473-7.092-7.479-7.092z"/>
+              </svg>
+            </div>
+            <div class="detail-content">
+              <span class="detail-label">Ressenti</span>
+              <span class="detail-value">{{ current.main.feels_like }}°C</span>
+            </div>
+          </div>
+
+          <div class="detail-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 12v-1.5c0-2.21-1.79-4-4-4s-4 1.79-4 4v1.5c-1.29 0-2.5.81-2.5 3s1.21 3 2.5 3h8c1.29 0 2.5-.81 2.5-3s-1.21-3-2.5-3z"/>
+              </svg>
+            </div>
+            <div class="detail-content">
+              <span class="detail-label">Humidité</span>
+              <span class="detail-value">{{ current.main.humidity }}%</span>
+            </div>
+          </div>
+
+          <div class="detail-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2zm0 14c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2zm0-7c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2z"/>
+              </svg>
+            </div>
+            <div class="detail-content">
+              <span class="detail-label">Vent</span>
+              <span class="detail-value">{{ current.wind.speed }} km/h</span>
+              <span class="wind-direction" [style.transform]="'rotate(' + (current.wind.deg + 90) + 'deg)'">
+                ↑
+              </span>
+            </div>
+          </div>
+
+          <div class="detail-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 4a8 8 0 108 8 8.009 8.009 0 00-8-8zm0 14a6 6 0 116-6 6.007 6.007 0 01-6 6zm.5-10h-1v5l4.28 2.54.5-.86-3.78-2.18z"/>
+              </svg>
+            </div>
+            <div class="detail-content">
+              <span class="detail-label">Pression</span>
+              <span class="detail-value">{{ current.main.pressure }} hPa</span>
+            </div>
+          </div>
+
+          <div class="detail-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="detail-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 4.5C7.305 4.5 3.129 7.349 1.5 12c1.629 4.651 5.805 7.5 10.5 7.5s8.871-2.849 10.5-7.5C20.871 7.349 16.695 4.5 12 4.5zm0 12a4.5 4.5 0 114.5-4.5 4.505 4.505 0 01-4.5 4.5z"/>
+                <circle cx="12" cy="12" r="2.5"/>
+              </svg>
+            </div>
+            <div class="detail-content">
+              <span class="detail-label">Visibilité</span>
+              <span class="detail-value">{{ (current.visibility / 1000) | number:'1.0-1' }} km</span>
+            </div>
+          </div>
+
+
         </div>
+
+        <!-- En dehors de la grid .weather-details -->
+        <div class="alert-container" *ngIf="hasAlert()">
+          <div
+            class="detail-card alert-card"
+            [ngClass]="{
+              thunderstorm: current.weather[0].main === 'Thunderstorm',
+              heat: current.main.temp > 35,
+              frost: current.main.temp < 0
+            }"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="detail-icon alert-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L1 21h22L12 2zm0 3.5L19.5 19h-15L12 5.5z"/>
+                <path d="M12 8v4m0 4h.01"/>
+              </svg>
+            </div>
+            <div class="detail-content">
+              <span class="detail-label alert-label">Alerte Météo</span>
+
+              <div class="detail-content-div">
+                <div *ngIf="current.weather[0].main === 'Thunderstorm'" class="alert-message">
+                  <span class="detail-value alert-value">Orages</span>
+                  <span class="alert-description">Risque d'éclairs et de fortes pluies</span>
+                </div>
+
+                <div *ngIf="current.main.temp > 35" class="alert-message">
+                  <span class="detail-value alert-value">Canicule</span>
+                  <span class="alert-description">Températures extrêmes - Restez hydraté</span>
+                </div>
+
+                <div *ngIf="current.main.temp < 0" class="alert-message">
+                  <span class="detail-value alert-value">Gel</span>
+                  <span class="alert-description">Verglas possible - Prudence</span>
+                </div>
+              </div>
+              <div class="alert-time">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                  <span>Valide jusqu'à {{ current.dt + 21600 | date:'HH:mm' }}</span>
+                </div>
+            </div>
+          </div>
+          </div>
+
       </div>
 
       <!-- Vue horaire -->
@@ -70,7 +193,7 @@
 
       <!-- Vue hebdomadaire -->
       <div *ngIf="activeView === 'weekly'">
-        <h3>Prévisions sur 6 jours</h3>
+        <h3>Prévisions sur 5 jours</h3>
         <div class="weekly-view">
           <div *ngFor="let day of weekly" class="day-card">
             <p>{{ formatDate(day.dt) }}</p>

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { WeatherService } from '../../services/weather/weather.service';
 import { FormsModule } from '@angular/forms'; 
-import { NgFor, NgIf, TitleCasePipe } from '@angular/common';
+import { DatePipe, DecimalPipe, NgClass, NgFor, NgIf, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, NgIf, NgFor],
+  imports: [FormsModule, NgIf, NgFor, DecimalPipe, DatePipe, NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -87,5 +87,22 @@ export class HomeComponent {
     }
     return this.current?.sys?.country || '';
   }
+
+  // Dans votre composant.ts
+  getAlertType() {
+    if (this.current.weather[0].main === 'Thunderstorm') return 'thunderstorm';
+    if (this.current.main.temp > 35) return 'heat';
+    if (this.current.main.temp < 0) return 'frost';
+    return null;
+  }
+
+  hasAlert(): boolean {
+  return (
+    this.current?.weather[0]?.main === 'Thunderstorm' ||
+    this.current?.main?.temp > 35 ||
+    this.current?.main?.temp < 0
+  );
+}
+
 
 }
