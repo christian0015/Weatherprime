@@ -141,7 +141,7 @@
 }
 
 .view-selector button.active {
-  background: #e63946;
+  background: #e63946; border: #e63946 solid 1px;
   color: white;
 }
 
